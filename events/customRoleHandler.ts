@@ -105,7 +105,7 @@ async function handleModal(interaction: any) {
     let roleId: string;
 
     if (existing?.value) {
-      roleId = existing.value;
+      roleId = existing.value as string;
     } else {
       const role = await guild.roles.create({
         name: hex,
@@ -119,7 +119,7 @@ async function handleModal(interaction: any) {
     await member.roles.add(roleId);
     await member.roles.add(ALREADY_CUSROLE_ROLE_ID);
     await interaction.reply({
-      content: `role dengan warna ${hex} berhasil dikasih ke kamu`,
+      content: `role dengan hex color ${hex} berhasil dikasih ke kamu`,
       ephemeral: true,
     });
   } catch (error) {

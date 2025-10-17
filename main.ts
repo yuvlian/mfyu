@@ -1,4 +1,4 @@
-import { Client, Events, GatewayIntentBits } from "discord.js";
+import { Client, Events, GatewayIntentBits, Partials } from "discord.js";
 import { TOKEN } from "./token.ts";
 import {
   event as reactionAdd,
@@ -24,9 +24,9 @@ if (import.meta.main) {
       GatewayIntentBits.GuildMembers,
     ],
     partials: [
-      "MESSAGE",
-      "CHANNEL",
-      "REACTION",
+      Partials.Message,
+      Partials.Channel,
+      Partials.Reaction,
     ],
   });
 

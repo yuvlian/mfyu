@@ -8,7 +8,7 @@ import {
   SlashCommandBuilder,
   TextChannel,
 } from "discord.js";
-import { ADMIN_ROLE_ID, GUILD_ID } from "../ids.ts";
+import { GUILD_ID } from "../ids.ts";
 import { KV } from "../kv.ts";
 
 export const command = {
@@ -34,13 +34,13 @@ export const command = {
       });
     }
 
-    if (
-      !member ||
-      !("roles" in member) ||
-      !member.roles.cache.has(ADMIN_ROLE_ID)
-    ) {
-      return interaction.editReply({ content: "Gak boleh" });
-    }
+    // if (
+    //   !member ||
+    //   (Array.isArray(member.roles) && !member.roles.includes(ADMIN_ROLE_ID)) ||
+    //   (!Array.isArray(member.roles) && !member.roles.cache.has(ADMIN_ROLE_ID))
+    // ) {
+    //   return interaction.reply("gx boleh");
+    // }
 
     try {
       const button = new ButtonBuilder()

@@ -114,11 +114,13 @@ async function handleReaction(
         `Error: ${error instanceof Error ? error.message : "Unknown error"}`,
       );
     } catch {
-      await msg.channel.send(
-        `<@${user.id}> gagal ${
-          add ? "nambah" : "hapus"
-        } role banh, coba lagi atau kontak admin`,
-      );
+      if ("send" in msg.channel && typeof msg.channel.send === "function") {
+        await msg.channel.send(
+          `<@${user.id}> gagal ${
+            add ? "nambah" : "hapus"
+          } role banh, coba lagi atau kontak admin`,
+        );
+      }
     }
   }
 }

@@ -15,10 +15,10 @@ if (-not $Args -or $Args.Count -eq 0 -or $Args[0] -in @("-h","--help","help")) {
 }
 
 $defaultFlags = @(
-  "--unstable-kv",
   "--allow-net",
   "--allow-env",
-  "--allow-read"
+  "--allow-read",
+  "--allow-write"
 )
 
 $allArgs = @("run") + $defaultFlags + $Args

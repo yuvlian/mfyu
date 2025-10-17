@@ -5,7 +5,7 @@ import {
   SlashCommandBuilder,
   TextChannel,
 } from "discord.js";
-import { ADMIN_ROLE_ID, GAME_ROLE_IDS, GUILD_ID } from "../ids.ts";
+import { GAME_ROLE_IDS, GUILD_ID } from "../ids.ts";
 import { KV } from "../kv.ts";
 
 export const command = {
@@ -18,7 +18,7 @@ export const command = {
     await interaction.deferReply({ ephemeral: true });
 
     const guild = interaction.guild;
-    const member = interaction.member;
+    // const member = interaction.member;
     const channel = interaction.channel as TextChannel | null;
 
     if (!guild || guild.id !== GUILD_ID) {
@@ -33,13 +33,13 @@ export const command = {
       });
     }
 
-    if (
-      !member ||
-      !("roles" in member) ||
-      !member.roles.cache.has(ADMIN_ROLE_ID)
-    ) {
-      return interaction.editReply({ content: "Gak boleh" });
-    }
+    // if (
+    //   !member ||
+    //   (Array.isArray(member.roles) && !member.roles.includes(ADMIN_ROLE_ID)) ||
+    //   (!Array.isArray(member.roles) && !member.roles.cache.has(ADMIN_ROLE_ID))
+    // ) {
+    //   return interaction.reply("gx boleh");
+    // }
 
     try {
       const rolesText = Object.entries(GAME_ROLE_IDS)
